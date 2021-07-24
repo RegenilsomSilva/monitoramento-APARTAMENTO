@@ -1,2 +1,2 @@
 
-worker: Automacao_Olx_Rodando_todos_os_dias.py
+worker: pyton Automacao_Olx_Rodando_todos_os_dias.py
