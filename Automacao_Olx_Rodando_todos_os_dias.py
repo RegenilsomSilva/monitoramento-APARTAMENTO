@@ -1,35 +1,31 @@
 
-
-import os
-import time 
-import openpyxl
-from datetime import datetime
-from time import sleep
-import random 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support  import expected_conditions
 from selenium.common.exceptions import *
+import os
+import time 
+import openpyxl
+from datetime import datetime
+from time import sleep
+import random 
 import glob
 import schedule
 
-# 1°) PASSO git clone https://github.com/Regenilsom/Monitoramento-de-preco-CDHU.git
-# 2°) PASSO Instalação da Biblioteca  pip install pigar
-
-
-print("               =================================================================================")
-print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
-print("               =================================================================================")
-print("               =================================================================================")
-print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
-
-print(os.linesep)
 
 
         
 def Buscador_De_Ap_Cdhu():
+    
+    print("               =================================================================================")
+    print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
+    print("               =================================================================================")
+    print("               =================================================================================")
+    print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
+
+    print(os.linesep)
 
     print(os.linesep)
     print(f'Aqui começar as Configurações do Corpo da Automação....Chrome Options....{os.linesep}')
