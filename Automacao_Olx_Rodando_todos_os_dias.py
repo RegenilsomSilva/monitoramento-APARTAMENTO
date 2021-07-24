@@ -1,5 +1,5 @@
 
-from logging import error
+
 import os
 import time 
 import openpyxl
@@ -13,8 +13,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support  import expected_conditions
 from selenium.common.exceptions import *
 import glob
-import shutil
-import pathlib
 import schedule
 
 # 1°) PASSO git clone https://github.com/Regenilsom/Monitoramento-de-preco-CDHU.git
@@ -52,7 +50,8 @@ def Buscador_De_Ap_Cdhu():
     Chrome_options.add_argument('--disable-dev-shm-usage')  # RODAR SEM ERRO DE POUCA MEMORIA
     Chrome_options.add_argument('--no-sandbox')             # RODAR EM SERVIDOR LINUX 
     caminho_do_Chome_driver = os.environ.get('CHROMEDRIVER_PATH') 
-    Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver)
+    Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver, options=Chrome_options)
+    # Webdriver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
 
     wait = WebDriverWait(
         driver=  Webdriver,
