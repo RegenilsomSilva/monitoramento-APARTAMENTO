@@ -242,10 +242,10 @@ def Buscador_De_Ap_Cdhu():
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
-# schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
 
-schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 
 
 while True:
