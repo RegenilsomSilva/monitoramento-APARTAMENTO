@@ -64,8 +64,10 @@ class EnvioDeEmails:
 
     def Anexa_Files(self):      
 # Anexar arquivos
+
         print(f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
-        emails_em_anexos = ['Apartamento_CDHU.xlsx']
+        emails_em_anexos = os.path.join(os.getcwd() + os.sep + 'Apartamento_CDHU.xlsx')
+
 
         for email_em_anexo in emails_em_anexos:
             with open(email_em_anexo, 'rb') as anexo:
