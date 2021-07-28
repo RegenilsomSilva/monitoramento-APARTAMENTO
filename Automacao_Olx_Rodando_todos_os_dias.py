@@ -42,12 +42,12 @@ def Buscador_De_Ap_Cdhu():
     print(os.linesep)
     print(f'Aqui começar as configuração do WebDriver  da Automação....Webdriver......{os.linesep}')
     #  CONFIGURAÇÃO PARA RODAR NO HEROKU 
-    # Chrome_options.add_argument('--headless')               # RODAR EM SEGUNDO PLANO
+    Chrome_options.add_argument('--headless')               # RODAR EM SEGUNDO PLANO
     Chrome_options.add_argument('--disable-dev-shm-usage')  # RODAR SEM ERRO DE POUCA MEMORIA
     Chrome_options.add_argument('--no-sandbox')             # RODAR EM SERVIDOR LINUX 
-    # caminho_do_Chome_driver = os.environ.get('CHROMEDRIVER_PATH') 
-    # Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver, options=Chrome_options)
-    Webdriver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
+    caminho_do_Chome_driver = os.environ.get('CHROMEDRIVER_PATH') 
+    Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver, options=Chrome_options)
+    # Webdriver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
 
     wait = WebDriverWait(
         driver=  Webdriver,
@@ -199,7 +199,7 @@ def Buscador_De_Ap_Cdhu():
 
                 Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
                 mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
-                
+
                 print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
                 print('Serviço de Raspagem de Dados terminado com sucesso web screll')
                 print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')     
@@ -242,7 +242,10 @@ def Buscador_De_Ap_Cdhu():
         print(os.linesep)
 
 # schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+
+
 schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+
 
 while True:
     schedule.run_pending()
