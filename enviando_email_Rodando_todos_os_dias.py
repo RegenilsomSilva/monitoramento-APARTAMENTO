@@ -79,7 +79,7 @@ class EnvioDeEmails:
     def To_Send_Email(self):
   # Fazendo  o envio de Emails      
         for contato in self.contatos:          
-            print(f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Agurade{os.linesep}')
+            print(f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Aguarde{os.linesep}')
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
                 sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)
