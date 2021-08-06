@@ -72,10 +72,7 @@ class EnvioDeEmails:
         targetPatter  = os.path.join(os.getcwd() + os.sep  + '*.xlsx')
         emails_em_anexos = glob.glob(targetPatter)
 
-        emails_em_anexos = str[os.path.join(os.getcwd() + os.sep + 'Apartamento_CDHU.xlsx')]
-
-
-
+        
         for email_em_anexo in emails_em_anexos:
 
             with open(email_em_anexo, 'rb') as anexo:
