@@ -15,19 +15,19 @@ import glob
 import schedule
 
 
+print("               =================================================================================")
+print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
+print("               =================================================================================")
+print("               =================================================================================")
+print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
 
+print(os.linesep)
+
+print(os.linesep)
         
 def Buscador_De_Ap_Cdhu():
     
-    print("               =================================================================================")
-    print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
-    print("               =================================================================================")
-    print("               =================================================================================")
-    print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
 
-    print(os.linesep)
-
-    print(os.linesep)
     print(f'Aqui começar as Configurações do Corpo da Automação....Chrome Options....{os.linesep}')
     Chrome_options = Options()
     Chrome_options.add_argument('--lang=pt-BR')
@@ -242,10 +242,10 @@ def Buscador_De_Ap_Cdhu():
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
-schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+# schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
 
-#  schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 
 
 while True:
