@@ -15,19 +15,19 @@ import glob
 import schedule
 
 
+print("               =================================================================================")
+print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
+print("               =================================================================================")
+print("               =================================================================================")
+print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
 
+print(os.linesep)
+
+print(os.linesep)
         
 def Buscador_De_Ap_Cdhu():
     
-    print("               =================================================================================")
-    print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
-    print("               =================================================================================")
-    print("               =================================================================================")
-    print("               ====== BUSCADOR DE APARTAMENTO DA CDHU NA PROMOÇÃO                        =======")
 
-    print(os.linesep)
-
-    print(os.linesep)
     print(f'Aqui começar as Configurações do Corpo da Automação....Chrome Options....{os.linesep}')
     Chrome_options = Options()
     Chrome_options.add_argument('--lang=pt-BR')
@@ -168,7 +168,9 @@ def Buscador_De_Ap_Cdhu():
                 # self.localizacao[informacoes].text]
                 print(f'📋 Estamos salvando a sua Pesquisa dentro do Excel 📝📝📝....{indice}')
 
-            criando_planilha.save('Apartamento_CDHU.xlsx') 
+                criando_planilha.save('Apartamento_CDHU.xlsx') 
+                criando_planilha.close()
+
 
             print('============================ AQUI FINALIZA A INSERÇÃO DAS INFORMAÇÕES DENTRO DA PLANILHA EXCEL ============================')
 
@@ -194,11 +196,13 @@ def Buscador_De_Ap_Cdhu():
                 print('💯 Acabou de Chegar no Final da Página......💯💯💯')
                 print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
             
-            
 
-                print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {datetime.now()}{os.linesep}')
+                Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
+                mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
+
+                print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
                 print('Serviço de Raspagem de Dados terminado com sucesso web screll')
-                print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as: {datetime.now()}')     
+                print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')     
 
 
         
@@ -208,6 +212,7 @@ def Buscador_De_Ap_Cdhu():
     from enviando_email_Rodando_todos_os_dias import EnvioDeEmails
     print(f'Aqui COMERÇA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')    
     send_Email = EnvioDeEmails
+    send_Email.Anexa_Files
     print('Estamos Enviando Seu Email !!!')
     send_Email.Start_Send
     print('E-mail Enviado com Sucesso !!!!')
@@ -230,12 +235,22 @@ def Buscador_De_Ap_Cdhu():
         print(f'⏭  Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
         os.remove(caminhos_dos_diretorios)
         print(f'⏭  Excluimos com Sucesso {os.linesep}')
-        print(f' 💯💯💯 Exclusão feitas as {datetime.now()}{os.linesep}')
+        
+        Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
+        mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
+        print(f' 💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou[9:]} {mostar_a_data_do_ano}{os.linesep}')
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
 # schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+
 schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
+
+
+
+# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+
+
 
 while True:
     schedule.run_pending()

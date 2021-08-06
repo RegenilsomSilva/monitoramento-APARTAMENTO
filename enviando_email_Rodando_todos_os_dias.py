@@ -34,7 +34,7 @@ class EnvioDeEmails:
 # Criando o e-mail
         print(f'Criando um  E-mail para ser Enviado{os.linesep}.....Aguarde{os.linesep}')
         self.mensagem = EmailMessage()
-        self.mensagem['Subject'] = f'valores Atualizado as {datetime.now()}'
+        self.mensagem['Subject'] = f'Valores Atualizado ás {datetime.now()}'
         self.mensagem['From'] =  self.ENDERECO_EMAIL
         self.mensagem['To'] = ', '.join(self.contatos)
         self.mensagem.set_content(' 🙌🙌🙌🙌 Olá a Sua Pesquisa do Apartamento CDHU Chegou ✔️ !!!')
@@ -64,11 +64,17 @@ class EnvioDeEmails:
 
     def Anexa_Files(self):      
 # Anexar arquivos
+
         print(f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
+
         
         # emails_em_anexos = ['Apartamento_CDHU.xlsx']
         targetPatter  = os.path.join(os.getcwd() + os.sep  + '*.xlsx')
         emails_em_anexos = glob.glob(targetPatter)
+
+        emails_em_anexos = str[os.path.join(os.getcwd() + os.sep + 'Apartamento_CDHU.xlsx')]
+
+
 
         for email_em_anexo in emails_em_anexos:
 
@@ -81,7 +87,7 @@ class EnvioDeEmails:
     def To_Send_Email(self):
   # Fazendo  o envio de Emails      
         for contato in self.contatos:          
-            print(f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Agurade{os.linesep}')
+            print(f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Aguarde{os.linesep}')
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
                 sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)

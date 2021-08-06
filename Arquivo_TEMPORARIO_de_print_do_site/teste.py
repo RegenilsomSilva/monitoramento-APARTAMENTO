@@ -1,7 +1,5 @@
 import os
-import pathlib
 import glob
-from time import time
 from time import sleep
 import random
 from datetime import datetime
@@ -26,5 +24,10 @@ for caminhos_dos_diretorios in caminho_do_diretorio:
     print(f'⏭ Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
     os.remove(caminhos_dos_diretorios)
     print(f'⏭ Excluimos com Sucesso {os.linesep}')
-    print(f'💯💯💯 Exclusão feitas as {datetime.now()}{os.linesep}')
+
+    mostrando_horario_certo =  datetime.now().strftime('%d%m%Y %H:%M')
+    mostrando_a_data = datetime.now().strftime('%d-%m-%Y')
+
+    print(f'💯💯💯 Exclusão feitas as {mostrando_horario_certo[9:]} do Dia {mostrando_a_data}{os.linesep} ')
+
     print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
