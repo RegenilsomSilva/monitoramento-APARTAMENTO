@@ -34,7 +34,7 @@ class EnvioDeEmails:
 # Criando o e-mail
         print(f'Criando um  E-mail para ser Enviado{os.linesep}.....Aguarde{os.linesep}')
         self.mensagem = EmailMessage()
-        self.mensagem['Subject'] = f'valores Atualizado as {datetime.now()}'
+        self.mensagem['Subject'] = f'Valores Atualizado ás {datetime.now()}'
         self.mensagem['From'] =  self.ENDERECO_EMAIL
         self.mensagem['To'] = ', '.join(self.contatos)
         self.mensagem.set_content(' 🙌🙌🙌🙌 Olá a Sua Pesquisa do Apartamento CDHU Chegou ✔️ !!!')
@@ -66,7 +66,7 @@ class EnvioDeEmails:
 # Anexar arquivos
 
         print(f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
-        emails_em_anexos = [os.path.join(os.getcwd() + os.sep + 'Apartamento_CDHU.xlsx')]
+        emails_em_anexos = str[os.path.join(os.getcwd() + os.sep + 'Apartamento_CDHU.xlsx')]
 
 
         for email_em_anexo in emails_em_anexos:

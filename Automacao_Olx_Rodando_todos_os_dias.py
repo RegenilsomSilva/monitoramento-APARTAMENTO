@@ -168,8 +168,8 @@ def Buscador_De_Ap_Cdhu():
                 # self.localizacao[informacoes].text]
                 print(f'📋 Estamos salvando a sua Pesquisa dentro do Excel 📝📝📝....{indice}')
 
-            criando_planilha.save('Apartamento_CDHU.xlsx') 
-            criando_planilha.close()
+                criando_planilha.save('Apartamento_CDHU.xlsx') 
+                criando_planilha.close()
 
 
             print('============================ AQUI FINALIZA A INSERÇÃO DAS INFORMAÇÕES DENTRO DA PLANILHA EXCEL ============================')
@@ -245,7 +245,7 @@ def Buscador_De_Ap_Cdhu():
 schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
 
-# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+#  schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 
 
 while True:
