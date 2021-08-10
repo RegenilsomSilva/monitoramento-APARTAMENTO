@@ -77,16 +77,17 @@ class EnvioDeEmails:
             f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
 
         # emails_em_anexos = ['Apartamento_CDHU.xlsx']
-        targetPatter = os.path.join(os.getcwd() + os.sep + '*.xlsx')
+        targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx') 
         emails_em_anexos = glob.glob(targetPatter)
+        
+        print(os.linesep)
+        print(emails_em_anexos)
 
         for email_em_anexo in emails_em_anexos:
-
             with open(email_em_anexo, 'rb') as anexo:
                 informacoes_anexo = anexo.read()
                 nome_arquivo = anexo.name
-            self.mensagem.add_attachment(
-                informacoes_anexo, maintype='application', subtype='octet-stream', filename=nome_arquivo)
+            self.mensagem.add_attachment(informacoes_anexo, maintype='application', subtype='octet-stream', filename=nome_arquivo)
             print(os.linesep)
 
     def To_Send_Email(self):

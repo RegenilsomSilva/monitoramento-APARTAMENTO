@@ -203,7 +203,7 @@ def Buscador_De_Ap_Cdhu():
                 print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
                 print('Serviço de Raspagem de Dados terminado com sucesso web screll')
                 print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')     
-
+                time.sleep(5)
 
         
     except:
@@ -211,11 +211,12 @@ def Buscador_De_Ap_Cdhu():
 
     from enviando_email_Rodando_todos_os_dias import EnvioDeEmails
     print(f'Aqui COMERÇA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')    
-    send_Email = EnvioDeEmails
-    send_Email.Anexa_Files
+    send_Email = EnvioDeEmails()
     print('Estamos Enviando Seu Email !!!')
-    send_Email.Start_Send
+    print('Estamos Anexando o arquivo dentro do seu E-mail')
+    send_Email.Start_Send()
     print('E-mail Enviado com Sucesso !!!!')
+
     print(f'Aqui TERMINA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')    
 
     print('# BUSCAR POR DIRETORIO VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS ".PNG"')
