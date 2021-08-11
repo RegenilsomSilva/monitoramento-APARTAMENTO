@@ -112,7 +112,7 @@ def Buscador_De_Ap_Cdhu():
    
     try:
         
-        for i in range(1,6):
+        for i in range(1,14):
 
             print(os.linesep)
             titulo = wait.until(
@@ -160,7 +160,7 @@ def Buscador_De_Ap_Cdhu():
             print(f'Aqui começar as configuração para Inseri as Informações dentro do Excel \Automação\......{os.linesep}')
 
            
-            for indice in range(1,45):
+            for indice in range(1,50):
 
                 nova_linha = [titulo[indice].text, preco[indice].text, localizacao[indice].text]
 
@@ -243,15 +243,16 @@ def Buscador_De_Ap_Cdhu():
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
-schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+
+
+# schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
+
+ #  NOVO AGENDADOR DE TAREFAS PARA RODAR TODA QUARTA-FEIRA
+schedule.every().wednesday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
+
 
 # schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-
-
-
 # schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
-
-
 
 while True:
     schedule.run_pending()
