@@ -34,8 +34,8 @@ class EnvioDeEmails:
     def Configurations_To_Envio(self):
         # Criando o e-mail
         print(f'Criando um  E-mail para ser Enviado{os.linesep}.....Aguarde{os.linesep}')
-        Mostrando_o_horario_que_enviou  = datetime.now().strftime('%d%m%Y  %H%M')
-        Mostra_a_data_do_ano            = datetime.now().strftime('%d-%m-Y')
+        Mostrando_o_horario_que_enviou  = datetime.now().strftime('%d-%m-%Y  %H:%M')
+        Mostra_a_data_do_ano            = datetime.now().strftime('%d-%m-%Y')
 
         self.mensagem = EmailMessage()
         self.mensagem['Subject'] = f'Valores Atualizado as {Mostrando_o_horario_que_enviou[9:]} do Dia {Mostra_a_data_do_ano}'
