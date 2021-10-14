@@ -2,13 +2,10 @@ import os
 import smtplib
 from email.message import EmailMessage
 import imghdr
-import time
 from datetime import datetime
 import random
 from time import sleep
 import glob
-import shutil
-import pathlib
 
 
 print(os.linesep)
@@ -33,20 +30,20 @@ class EnvioDeEmails:
 
     def Configurations_To_Envio(self):
         # Criando o e-mail
-        print(f'Criando um  E-mail para ser Enviado{os.linesep}.....Aguarde{os.linesep}')
-        Mostrando_o_horario_que_enviou  = datetime.now().strftime('%d/%m/%Y  %H:%M')
-        Mostra_a_data_do_ano            = datetime.now().strftime('%d/%m/%Y')
+        print(
+            f'Criando um  E-mail para ser Enviado{os.linesep}.....Aguarde{os.linesep}')
+        Mostrando_o_horario_que_enviou = datetime.now().strftime('%H:%M')
+        Mostra_a_data_do_ano = datetime.now().strftime('%d/%m/%Y')
 
         self.mensagem = EmailMessage()
-        self.mensagem['Subject'] = f'Valores Atualizado as {Mostrando_o_horario_que_enviou[10:]} do Dia {Mostra_a_data_do_ano}'
+        self.mensagem['Subject'] = f'Valores Atualizado as {Mostrando_o_horario_que_enviou} do Dia {Mostra_a_data_do_ano}'
         self.mensagem['From'] = self.ENDERECO_EMAIL
         self.mensagem['To'] = ', '.join(self.contatos)
         self.mensagem.set_content(
-            ' 🙌🙌🙌🙌 Olá a Sua Pesquisa do Apartamento CDHU Chegou Boas Compras  ✔️ !!!')
+            '🙌🙌🙌🙌 Olá a Sua Pesquisa do Apartamento CDHU Chegou Boas Compras  ✔️ !!!')
 
 
 # Configurar o anexo de imagens
-
 
     def Anexo_Imagens(self):
 
@@ -79,9 +76,10 @@ class EnvioDeEmails:
             f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
 
         # emails_em_anexos = ['Apartamento_CDHU.xlsx']
-        targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx') 
+        targetPatter = os.path.join(
+            os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx')
         emails_em_anexos = glob.glob(targetPatter)
-        
+
         print(os.linesep)
         print(emails_em_anexos)
 
@@ -89,7 +87,8 @@ class EnvioDeEmails:
             with open(email_em_anexo, 'rb') as anexo:
                 informacoes_anexo = anexo.read()
                 nome_arquivo = anexo.name
-            self.mensagem.add_attachment(informacoes_anexo, maintype='application', subtype='octet-stream', filename=nome_arquivo)
+            self.mensagem.add_attachment(
+                informacoes_anexo, maintype='application', subtype='octet-stream', filename=nome_arquivo)
             print(os.linesep)
 
     def To_Send_Email(self):

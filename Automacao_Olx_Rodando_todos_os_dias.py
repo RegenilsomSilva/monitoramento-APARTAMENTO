@@ -36,7 +36,7 @@ def Buscador_De_Ap_Cdhu():
     Chrome_options.add_argument('--ignore-ssl-errors')
     Chrome_options.add_argument("--ignore-certificate-errors")
     Chrome_options.add_argument('--ignore-page_load_metrics_update_dispatcher')
-    Chrome_options.add_argument('--disable-gpu')
+    Chrome_options.add_argument('--disable-gpu') 
     Chrome_options.binary_location =  os.environ.get('GOOGLE_CHROME_BIN')
 
     print(os.linesep)
@@ -248,11 +248,11 @@ def Buscador_De_Ap_Cdhu():
 # schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
  #  NOVO AGENDADOR DE TAREFAS PARA RODAR TODA QUARTA-FEIRA
-schedule.every().wednesday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
+# schedule.every().wednesday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
 
 
 # schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 
 while True:
     schedule.run_pending()
