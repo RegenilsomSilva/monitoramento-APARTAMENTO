@@ -252,7 +252,8 @@ def Buscador_De_Ap_Cdhu():
 
 
 # schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+schedule.every(50).seconds.do(Buscador_De_Ap_Cdhu)
 
 while True:
     schedule.run_pending()
