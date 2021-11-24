@@ -17,7 +17,7 @@ print(os.linesep)
 print(os.linesep)
 
 # vamos aguardar um tempo para que o Sistema envie o E-mail com as Imagens e Depois os apague 
-sleep(random.randint(15,35))
+sleep(random.randint(10,15))
 print(f'⏭ Vamos Excluir todas as Fotos com final .png{os.linesep}.....Aguarde{os.linesep}')
 
 for caminhos_dos_diretorios in caminho_do_diretorio:

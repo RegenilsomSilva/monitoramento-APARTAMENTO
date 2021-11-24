@@ -100,7 +100,7 @@ class EnvioDeEmails:
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
                 sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)
                 sistema_de_envio.send_message(self.mensagem)
-                sleep(random.randint(8, 10))
+                sleep(random.randint(6, 8))
 
         print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
 
