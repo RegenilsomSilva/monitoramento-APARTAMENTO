@@ -18,8 +18,7 @@ class EnvioDeEmails:
         print(f'configuração de Login {os.linesep}')
         self.ENDERECO_EMAIL = os.environ.get('EMAIL_REMETENTE')
         self.SENHA_EMAIL = os.environ.get('SENHA_DO_EMAIL')
-        self.contatos = ['paula43oliveira@hotmail.com',
-                         'regenilsomfeliz@outlook.com']
+        self.contatos = ['paula43oliveira@hotmail.com','regenilsomfeliz@outlook.com','regenilsom2015@gmail.com']
 
     def Start_Send(self):
 
@@ -52,7 +51,7 @@ class EnvioDeEmails:
 
         # Estarei fazendo com que o sistema faça a integração caminho + o Diretório que se encontra as fotos .png
         targetPatter = os.path.join(
-            os.getcwd() + os.sep + 'Arquivo_TEMPORARIO_de_print_do_site' + os.sep + '*.png')
+            os.getcwd() + os.sep + 'Diretório' + os.sep + '*.png')
         caminho_das_fotos = glob.glob(targetPatter)
 
         # Aqui estou fazendo um Loop, para que o Sistema Encontre minha extensão .png
@@ -66,7 +65,7 @@ class EnvioDeEmails:
 
             print(
                 f'⏳ Acabamos de Fazer a Manipulação de imagens.... ⏳ {os.linesep}.....Aguarde')
-            sleep(random.randint(1, 2))
+            sleep(random.randint(1,2))
             print(os.linesep)
 
     def Anexa_Files(self):
@@ -92,15 +91,14 @@ class EnvioDeEmails:
             print(os.linesep)
 
     def To_Send_Email(self):
-      # Fazendo  o envio de Emails
-        for contato in self.contatos:
-            print(
-                f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Aguarde{os.linesep}')
 
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
-                sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)
-                sistema_de_envio.send_message(self.mensagem)
-                sleep(random.randint(6, 8))
+      # Fazendo  o envio de Emails
+        print(f' 🙌🙌 Fazendo Envio Seguro de E-mail{os.linesep}......Aguarde{os.linesep}')
+
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
+            sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)
+            sistema_de_envio.send_message(self.mensagem)
+            sleep(random.randint(5,7))
 
         print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
 

@@ -14,7 +14,6 @@ import random
 import glob
 import schedule
 
-
 print("               =================================================================================")
 print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
 print("               =================================================================================")
@@ -25,11 +24,9 @@ print(os.linesep)
 
 print(os.linesep)
 
-
 def Buscador_De_Ap_Cdhu():
 
-    print(
-        f'Aqui começar as Configurações do Corpo da Automação....Chrome Options....{os.linesep}')
+    print(f'Aqui começar as Configurações do body da Automação....Chrome Options....{os.linesep}')
     Chrome_options = Options()
     Chrome_options.add_argument('--lang=pt-BR')
     Chrome_options.add_argument('--disable-notifications')
@@ -41,8 +38,7 @@ def Buscador_De_Ap_Cdhu():
     Chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
 
     print(os.linesep)
-    print(
-        f'Aqui começar as configuração do WebDriver  da Automação....Webdriver......{os.linesep}')
+    print(f'Aqui começar as configuração do WebDriver  da Automação....Webdriver......{os.linesep}')
     #  CONFIGURAÇÃO PARA RODAR NO HEROKU
     # RODAR EM SEGUNDO PLANO
     Chrome_options.add_argument('--headless')
@@ -51,8 +47,7 @@ def Buscador_De_Ap_Cdhu():
     # RODAR EM SERVIDOR LINUX
     Chrome_options.add_argument('--no-sandbox')
     caminho_do_Chome_driver = os.environ.get('CHROMEDRIVER_PATH')
-    Webdriver = webdriver.Chrome(
-        executable_path=caminho_do_Chome_driver, options=Chrome_options)
+    Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver, options=Chrome_options)
     # Webdriver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
 
     wait = WebDriverWait(
@@ -65,14 +60,12 @@ def Buscador_De_Ap_Cdhu():
     )
 
     print(os.linesep)
-    print(
-        f'Aqui começar as configuração Na Página do Site Olx  da Automação....Webdriver......{os.linesep}')
+    print(f'Aqui começar as configuração Na Página do Site Olx  da Automação....Webdriver......{os.linesep}')
     Webdriver.get("https://sp.olx.com.br/?q=apartamento%20cdhu")
     Webdriver.maximize_window()
 
     print(os.linesep)
-    print(
-        f'Aqui começar as configuração para desabiliatr os Cookis da Página do Site Olx  da Automação....Webdriver......{os.linesep}')
+    print(f'Aqui começar as configuração para desabiliatr os Cookis da Página do Site Olx  da Automação....Webdriver......{os.linesep}')
     try:
 
         cookies_desabilitado = wait.until(
@@ -81,10 +74,8 @@ def Buscador_De_Ap_Cdhu():
             )
         )
         if cookies_desabilitado is not None:
-            print(
-                f'🙌 🍪 Encontramos a Notificação para Desabilitar o Cookies 🍪 🍪 🍪 {os.linesep}.....Aguarde Por favor')
-            Webdriver.execute_script(
-                'arguments[0].click()', cookies_desabilitado)
+            print(f'🙌 🍪 Encontramos a Notificação para Desabilitar o Cookies 🍪 🍪 🍪 {os.linesep}.....Aguarde Por favor')
+            Webdriver.execute_script('arguments[0].click()', cookies_desabilitado)
             print('Desabilitamos com Sucesso !!!!!')
     except:
         print('🤔 Não Formos Capaz de Encontra a Notificação dos cookies...')
@@ -94,8 +85,7 @@ def Buscador_De_Ap_Cdhu():
     print('============================ AQUI COMEÇA A CRIAÇÃO DA PLANILHA EXCEL ============================')
     print(os.linesep)
 
-    print(
-        f'Aqui começar as configuração para Criar Planilha Excel   da Automação.......{os.linesep}')
+    print(f'Aqui começar as configuração para Criar Planilha Excel   da Automação.......{os.linesep}')
     criando_planilha = openpyxl.Workbook()
     criando_planilha.create_sheet('Apartamento_Cdhu')
     planilha_apartamento = criando_planilha['Apartamento_Cdhu']
@@ -115,12 +105,11 @@ def Buscador_De_Ap_Cdhu():
     print('============================ AQUI FINALIZA A CRIAÇÃO DA PLANILHA EXCEL ============================')
 
     print(os.linesep)
-    print(
-        f'Aqui começar as configuração para Encontra os elementos  da Página do Site Olx  da Automação......{os.linesep}')
+    print(f'Aqui começar as configuração para Encontra os elementos  da Página do Site Olx  da Automação......{os.linesep}')
 
     try:
 
-        for i in range(1, 23):
+        for i in range(1,23):
 
             print(os.linesep)
             titulo = wait.until(
@@ -129,8 +118,7 @@ def Buscador_De_Ap_Cdhu():
                 )
             )
             if titulo is not None:
-                print(
-                    f'🤗 Encontramos Todos os Títulos da Página 🤗 {os.linesep}')
+                print(f'🤗 Encontramos Todos os Títulos da Página 🤗 {os.linesep}')
 
             preco = wait.until(
                 expected_conditions.presence_of_all_elements_located(
@@ -143,18 +131,15 @@ def Buscador_De_Ap_Cdhu():
 
             localizacao = wait.until(
                 expected_conditions.presence_of_all_elements_located(
-                    (By.XPATH,
-                     '//span[@class="sc-7l84qu-1 ciykCV sc-ifAKCX dpURtf"]')
+                    (By.XPATH, '//span[@class="sc-7l84qu-1 ciykCV sc-ifAKCX dpURtf"]')
                 )
             )
             if localizacao is not None:
-                print(
-                    f'🙌 Encontramos Todas as suas Localização da sua Pesquisa{os.linesep}')
+                print(f'🙌 Encontramos Todas as suas Localização da sua Pesquisa{os.linesep}')
 
             print(os.linesep)
 #  '''===========================================================================////////////////////////='''
-            print(
-                f'Aqui começar as configuração para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
+            print(f'Aqui começar as configuração para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
             # VAMOS CRIAR UMA VARIAVÉL E ATRIBUIR ()isable-gpu
             Webdriver.execute_script('window.scrollBy(0,800)')
             # VAMOS DESCER 600PIXEL DA PÁGINA PARA PODER TIRA O PRINT
@@ -162,8 +147,7 @@ def Buscador_De_Ap_Cdhu():
             print(
                 f'🙌 Estamos tirando um Printe das Informações do Site 🙌 .....{os.linesep}.....Aguarde')
             tirando_printe_do_site = str(round(time.time() * 1000)) + '.png'
-            printe_ja_tirado = os.path.join(
-                'Arquivo_TEMPORARIO_de_print_do_site', tirando_printe_do_site)
+            printe_ja_tirado = os.path.join('Diretório', tirando_printe_do_site)
             # Depois vamos usar o webdriver ou driver para fazer a função de tirar o printe da Tela
             Webdriver.save_screenshot(printe_ja_tirado)
 #  :'''===================================================================////////////////////////='''
@@ -194,8 +178,7 @@ def Buscador_De_Ap_Cdhu():
                 f'Aqui começar as configuração para Encontra a Próxima Página do Site Olx  Automação......{os.linesep}')
             # self.webdriver.execute_script('Window.scrollTo(0,document.body.scrollHeight);') #desce a Página até o Final.
 
-            Webdriver.execute_script(
-                'window.scrollTo(0,document.body.scrollHeight);')
+            Webdriver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
             proxima_pagina = wait.until(
                 expected_conditions.presence_of_element_located(
                     # (By.XPATH,' //*[starts-with(text(),"Próxima pagina")]')
@@ -206,9 +189,8 @@ def Buscador_De_Ap_Cdhu():
 
                 print(os.linesep)
                 print(f' ⏭  Encontramos a Página de Próximo ⏭ {os.linesep}')
-                sleep(random.randint(2, 4))
-                Webdriver.execute_script(
-                    "arguments[0].click()", proxima_pagina)
+                sleep(random.randint(2,4))
+                Webdriver.execute_script("arguments[0].click()", proxima_pagina)
                 print('💯 Acabou de Chegar no Final da Página......💯💯💯')
                 print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
 
@@ -234,12 +216,10 @@ def Buscador_De_Ap_Cdhu():
     send_Email.Start_Send()
     print('E-mail Enviado com Sucesso !!!!')
 
-    print(
-        f'Aqui TERMINA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
+    print(f'Aqui TERMINA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
 
     print('# BUSCAR POR DIRETORIO VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS ".PNG"')
-    targetPatter = os.path.join(
-        os.getcwd() + os.sep + 'Arquivo_TEMPORARIO_de_print_do_site' + os.sep + '*.png')
+    targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretório' + os.sep + '*.png')
     # VAMOS ATRIBUIR A UMA VARIAVÉL, PARA BUSCAR TODAS AS INFORMAÇÕES DO targetPatter
     caminho_do_diretorio = glob.glob(targetPatter)
     print(caminho_do_diretorio)
@@ -249,22 +229,18 @@ def Buscador_De_Ap_Cdhu():
     # vamos aguardar um tempo para que o Sistema envie o E-mail com as Imagens e Depois os apague
     # Backup_Original  sleep(random.randint(180,240))
     # sleep(random.randint(25,35))
-    sleep(random.randint(10, 15))
-    print(
-        f'⏭  Vamos Excluir todas as Fotos com final .png{os.linesep}.....Aguarde{os.linesep}')
+    sleep(random.randint(10,15))
+    print(f'⏭  Vamos Excluir todas as Fotos com final .png{os.linesep}.....Aguarde{os.linesep}')
 
     for caminhos_dos_diretorios in caminho_do_diretorio:
-        print(
-            f'⏭  Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
+        print(f'⏭  Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
         os.remove(caminhos_dos_diretorios)
         print(f'⏭  Excluimos com Sucesso {os.linesep}')
 
         Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
         mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
-        print(
-            f' 💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou[9:]} {mostar_a_data_do_ano}{os.linesep}')
-        print(
-            f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
+        print(f'💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou[9:]} {mostar_a_data_do_ano}{os.linesep}')
+        print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
 

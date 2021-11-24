@@ -8,7 +8,7 @@ from datetime import datetime
 #targetPatter = r"C:\Users\regen\Desktop\Projetos_Pyton\AUTOMACAO\Mestre do E-mail\Arquivo_TEMPORARIO_de_print_do_site\*.png"
 
 # BUSCAR POR DIRETORIO VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS '.PNG'
-targetPatter = os.path.join(os.getcwd() + os.sep + 'Arquivo_TEMPORARIO_de_print_do_site' + os.sep +   '*.png') 
+targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretório' + os.sep +   '*.png') 
 # VAMOS ATRIBUIR A UMA VARIAVÉL, PARA BUSCAR TODAS AS INFORMAÇÕES DO targetPatter
 caminho_do_diretorio = glob.glob(targetPatter)
 
