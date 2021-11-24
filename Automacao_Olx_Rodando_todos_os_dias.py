@@ -271,11 +271,11 @@ def Buscador_De_Ap_Cdhu():
 # schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
  #  NOVO AGENDADOR DE TAREFAS PARA RODAR TODA QUARTA-FEIRA
-# schedule.every().thursday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
+schedule.every().thursday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
 
 
 # schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 # schedule.every(50).seconds.do(Buscador_De_Ap_Cdhu)
 
 while True:
