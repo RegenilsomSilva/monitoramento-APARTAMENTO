@@ -105,7 +105,7 @@ def Buscador_De_Ap_Cdhu():
     print('============================ AQUI FINALIZA A CRIAÇÃO DA PLANILHA EXCEL ============================')
 
     print(os.linesep)
-    print(f'Aqui começar as configuração para Encontra os elementos  da Página do Site Olx  da Automação......{os.linesep}')
+    print(f'Aqui começar as configurações para Encontra os elementos  da Página do Site Olx  da Automação......{os.linesep}')
 
     try:
 
@@ -139,13 +139,12 @@ def Buscador_De_Ap_Cdhu():
 
             print(os.linesep)
 #  '''===========================================================================////////////////////////='''
-            print(f'Aqui começar as configuração para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
-            # VAMOS CRIAR UMA VARIAVÉL E ATRIBUIR ()isable-gpu
+            print(f'Aqui começar as configurações para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
+            # Vamos criar uma variável e atribuir ()Disable-gpu
             Webdriver.execute_script('window.scrollBy(0,800)')
-            # VAMOS DESCER 600PIXEL DA PÁGINA PARA PODER TIRA O PRINT
-            sleep(random.randint(1, 3))
-            print(
-                f'🙌 Estamos tirando um Printe das Informações do Site 🙌 .....{os.linesep}.....Aguarde')
+            # VAMOS DESCER 800PIXEL DA PÁGINA PARA PODER TIRA O PRINT
+            sleep(random.randint(1,2))
+            print(f'🙌 Estamos tirando um Print das Informações do Site 🙌 .....{os.linesep}.....Aguarde alguns instante!')
             tirando_printe_do_site = str(round(time.time() * 1000)) + '.png'
             printe_ja_tirado = os.path.join('Diretório', tirando_printe_do_site)
             # Depois vamos usar o webdriver ou driver para fazer a função de tirar o printe da Tela
@@ -155,8 +154,7 @@ def Buscador_De_Ap_Cdhu():
             print(os.linesep)
             print('============================ AQUI COMEÇA A INSERÇÃO DAS INFORMAÇÕES DENTRO DA PLANILHA EXCEL ============================')
             print(os.linesep)
-            print(
-                f'Aqui começar as configuração para Inseri as Informações dentro do Excel \Automação\......{os.linesep}')
+            print(f'Aqui começar as configuração para Inseri as Informações dentro do Excel \Automação\......{os.linesep}')
 
             for indice in range(1, 49):
 
@@ -189,7 +187,7 @@ def Buscador_De_Ap_Cdhu():
 
                 print(os.linesep)
                 print(f' ⏭  Encontramos a Página de Próximo ⏭ {os.linesep}')
-                sleep(random.randint(2,4))
+                sleep(random.randint(2,3))
                 Webdriver.execute_script("arguments[0].click()", proxima_pagina)
                 print('💯 Acabou de Chegar no Final da Página......💯💯💯')
                 print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
@@ -197,15 +195,13 @@ def Buscador_De_Ap_Cdhu():
                 Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
                 mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
 
-                print(
-                    f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
+                print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
                 print('Serviço de Raspagem de Dados terminado com sucesso web screll')
-                print(
-                    f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')
+                print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')
                 time.sleep(3)
 
     except:
-        print('Procure o Erro ..... Não Sei onde está o Erro ')
+        print('🤔 Não Formos Capaz de Encontra o Erro ..... Não Sei onde está o Erro ')
 
     from enviando_email_Rodando_todos_os_dias import EnvioDeEmails
     print(
@@ -216,9 +212,9 @@ def Buscador_De_Ap_Cdhu():
     send_Email.Start_Send()
     print('E-mail Enviado com Sucesso !!!!')
 
-    print(f'Aqui TERMINA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
+    print(f'Aqui Termina as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
 
-    print('# BUSCAR POR DIRETORIO VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS ".PNG"')
+    print('# BUSCAR POR DIRETÓRIO.... VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS ".PNG"')
     targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretório' + os.sep + '*.png')
     # VAMOS ATRIBUIR A UMA VARIAVÉL, PARA BUSCAR TODAS AS INFORMAÇÕES DO targetPatter
     caminho_do_diretorio = glob.glob(targetPatter)
@@ -247,11 +243,11 @@ def Buscador_De_Ap_Cdhu():
 # schedule.every().days.at('07:25:45').do(Buscador_De_Ap_Cdhu)
 
  #  NOVO AGENDADOR DE TAREFAS PARA RODAR TODA QUARTA-FEIRA
-schedule.every().thursday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
+# schedule.every().thursday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
 
 
 # schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
+schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
 # schedule.every(50).seconds.do(Buscador_De_Ap_Cdhu)
 
 while True:
