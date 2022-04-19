@@ -1,5 +1,6 @@
 
 from selenium import webdriver
+import openpyxl
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,7 +8,6 @@ from selenium.webdriver.support import expected_conditions
 from selenium.common.exceptions import *
 import os
 import time
-import openpyxl
 from datetime import datetime
 from time import sleep
 import random
@@ -92,19 +92,19 @@ def Buscador_De_Ap_Cdhu():
     criando_planilha = openpyxl.Workbook()
     criando_planilha.create_sheet('Apartamento_Cdhu')
     planilha_apartamento = criando_planilha['Apartamento_Cdhu']
-    # self.planilha_apartamento.cell(row=1, column=1, value='Títulos')
-    # self.planilha_apartamento.cell(row=1, column=2, value='Preços')
-    # self.planilha_apartamento.cell(row=1, column=3, value='Localização')
-    # self.planilha_apartamento.cell(row=2,  column=1, value=' ')
-    # self.planilha_apartamento.cell(row=2,  column=2, value= '')
-    # self.planilha_apartamento.cell(row=2,  column=2, value= '')
+    planilha_apartamento.cell(row=1, column=1, value='Títulos')
+    planilha_apartamento.cell(row=1, column=2, value='Preços')
+    planilha_apartamento.cell(row=1, column=3, value='Localização')
+    planilha_apartamento.cell(row=2,  column=1, value=' ')
+    planilha_apartamento.cell(row=2,  column=2, value= ' ')
+    planilha_apartamento.cell(row=2,  column=2, value= ' ')
 
-    planilha_apartamento['A1'] = 'Títulos'
-    planilha_apartamento['B1'] = 'Preços'
-    planilha_apartamento['C1'] = 'Localização'
-    planilha_apartamento['A2'] = ' '
-    planilha_apartamento['B2'] = ' '
-    planilha_apartamento['C2'] = ' '
+    # planilha_apartamento['A1'] = 'Títulos'
+    # planilha_apartamento['B1'] = 'Preços'
+    # planilha_apartamento['C1'] = 'Localização'
+    # planilha_apartamento['A2'] = ' '
+    # planilha_apartamento['B2'] = ' '
+    # planilha_apartamento['C2'] = ' '
     print('============================ AQUI FINALIZA A CRIAÇÃO DA PLANILHA EXCEL ============================')
 
     print(os.linesep)
@@ -143,15 +143,17 @@ def Buscador_De_Ap_Cdhu():
             print(os.linesep)
 #  '''===========================================================================////////////////////////='''
             print(f'Aqui começar as configurações para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
-            # Vamos criar uma variável e atribuir ()Disable-gpu
             Webdriver.execute_script('window.scrollBy(0,800)')
             # VAMOS DESCER 800PIXEL DA PÁGINA PARA PODER TIRA O PRINT
             sleep(random.randint(1,2))
             print(f'🙌 Estamos tirando um Print das Informações do Site 🙌 .....{os.linesep}.....Aguarde alguns instante!')
-            tirando_printe_do_site = str(round(time.time() * 1000)) + '.png'
-            printe_ja_tirado = os.path.join('Diretório', tirando_printe_do_site)
-            # Depois vamos usar o webdriver ou driver para fazer a função de tirar o printe da Tela
-            Webdriver.save_screenshot(printe_ja_tirado)
+            print('Eh hora de tira um Print da Página !!!!!')
+            time.sleep(random.randint(2, 3))
+            nome_arquivo = str(datetime.now().strftime('%d-%m-%Y -%S')) + ".png"
+            nome_Arquivo_com_Diretorio = os.path.join('Diretório', nome_arquivo )
+            Webdriver.save_screenshot(nome_Arquivo_com_Diretorio)
+
+          
 #  :'''===================================================================////////////////////////='''
             # self.webdriver.execute_script('window.scrollBy(0,900)')
             print(os.linesep)
@@ -161,22 +163,18 @@ def Buscador_De_Ap_Cdhu():
 
             for indice in range(1, 49):
 
-                nova_linha = [titulo[indice].text,
-                              preco[indice].text, localizacao[indice].text]
+                nova_linha = [titulo[indice].text,preco[indice].text, localizacao[indice].text]
 
                 planilha_apartamento.append(nova_linha)
                 # self.localizacao[informacoes].text]
-                print(
-                    f'📋 Estamos salvando a sua Pesquisa dentro do Excel 📝📝📝....{indice}')
+                print(f'📋 Estamos salvando a sua Pesquisa dentro do Excel 📝📝📝....{indice}')
 
                 criando_planilha.save('Apartamento_CDHU.xlsx')
-                criando_planilha.close()
 
             print('============================ AQUI FINALIZA A INSERÇÃO DAS INFORMAÇÕES DENTRO DA PLANILHA EXCEL ============================')
 
             print(os.linesep)
-            print(
-                f'Aqui começar as configuração para Encontra a Próxima Página do Site Olx  Automação......{os.linesep}')
+            print(f'Aqui começar as configuração para Encontra a Próxima Página do Site Olx  Automação......{os.linesep}')
             # self.webdriver.execute_script('Window.scrollTo(0,document.body.scrollHeight);') #desce a Página até o Final.
 
             Webdriver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
@@ -225,9 +223,7 @@ def Buscador_De_Ap_Cdhu():
     print(os.linesep)
     print(os.linesep)
 
-    # vamos aguardar um tempo para que o Sistema envie o E-mail com as Imagens e Depois os apague
-    # Backup_Original  sleep(random.randint(180,240))
-    # sleep(random.randint(25,35))
+
     sleep(random.randint(10,15))
     print(f'⏭  Vamos Excluir todas as Fotos com final .png{os.linesep}.....Aguarde{os.linesep}')
 
@@ -236,24 +232,14 @@ def Buscador_De_Ap_Cdhu():
         os.remove(caminhos_dos_diretorios)
         print(f'⏭  Excluimos com Sucesso {os.linesep}')
 
-        Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
+        Mostrando_o_horario_que_enviou = datetime.now().strftime('%d-%m-%Y')
         mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
-        print(f'💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou[9:]} {mostar_a_data_do_ano}{os.linesep}')
+        print(f'💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou} {mostar_a_data_do_ano}{os.linesep}')
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
 
 
 schedule.every().days.at('07:27:45').do(Buscador_De_Ap_Cdhu)
-
-# do dia aaaaa
-# ---NOVO AGENDADOR DE TAREFAS PARA RODAR TODA QUARTA-FEIRA---
-
-# schedule.every().thursday.at('07:27:35').do(Buscador_De_Ap_Cdhu)
-
-
-# schedule.every(2).minutes.do(Buscador_De_Ap_Cdhu)
-# schedule.every(1.5).minutes.do(Buscador_De_Ap_Cdhu)
-# schedule.every(50).seconds.do(Buscador_De_Ap_Cdhu)
 
 while True:
     schedule.run_pending()
