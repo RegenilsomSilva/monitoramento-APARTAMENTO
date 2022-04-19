@@ -66,6 +66,9 @@ def Buscador_De_Ap_Cdhu():
     # Webdriver.get("https://sp.olx.com.br/sao-paulo-e-regiao/outras-cidades/guarulhos/imoveis/venda?q=apartamento%20cdhu")
 
     Webdriver.maximize_window()
+    Hora_Atual = str(datetime.now().strftime('%H:%M'))
+    Ano_Atual = str(datetime.now().strftime('%d-%m-%Y'))
+
 
     print(os.linesep)
     print(f'Aqui começar as configuração para desabiliatr os Cookis da Página do Site Olx  da Automação....Webdriver......{os.linesep}')
