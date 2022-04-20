@@ -71,12 +71,10 @@ class EnvioDeEmails:
     def Anexa_Files(self):
         # Anexar arquivos
 
-        print(
-            f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
+        print(f' 🙌🙌 Enviando E-mail com Anexo de Arquivo{os.linesep}.......Aguarde{os.linesep}')
 
         # emails_em_anexos = ['Apartamento_CDHU.xlsx']
-        targetPatter = os.path.join(
-            os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx')
+        targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx')
         emails_em_anexos = glob.glob(targetPatter)
 
         print(os.linesep)
@@ -98,7 +96,7 @@ class EnvioDeEmails:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as sistema_de_envio:
             sistema_de_envio.login(self.ENDERECO_EMAIL, self.SENHA_EMAIL)
             sistema_de_envio.send_message(self.mensagem)
-            sleep(random.randint(5,7))
+            sleep(random.randint(4,6))
 
         print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖{os.linesep}')
 

@@ -13,6 +13,7 @@ from time import sleep
 import random
 import glob
 import schedule
+import shutil
 
 print("               =================================================================================")
 print("               ======          AUTOMAÇÃO DO SITE OLX                                     =======")
@@ -48,7 +49,6 @@ def Buscador_De_Ap_Cdhu():
     Chrome_options.add_argument('--no-sandbox')
     caminho_do_Chome_driver = os.environ.get('CHROMEDRIVER_PATH')
     Webdriver = webdriver.Chrome(executable_path=caminho_do_Chome_driver, options=Chrome_options)
-    # Webdriver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
 
     wait = WebDriverWait(
         driver=Webdriver,
@@ -62,14 +62,10 @@ def Buscador_De_Ap_Cdhu():
     print(os.linesep)
     print(f'Aqui começar as configuração Na Página do Site Olx  da Automação....Webdriver......{os.linesep}')
     Webdriver.get("https://sp.olx.com.br/?q=apartamento%20cdhu")
-    # SÓ AP DE GUARULHOS
-    # Webdriver.get("https://sp.olx.com.br/sao-paulo-e-regiao/outras-cidades/guarulhos/imoveis/venda?q=apartamento%20cdhu")
-
+    
     Webdriver.maximize_window()
     Hora_Atual = str(datetime.now().strftime('%H:%M'))
     Ano_Atual = str(datetime.now().strftime('%d-%m-%Y'))
-
-
     print(os.linesep)
     print(f'Aqui começar as configuração para desabiliatr os Cookis da Página do Site Olx  da Automação....Webdriver......{os.linesep}')
     try:
@@ -101,15 +97,14 @@ def Buscador_De_Ap_Cdhu():
     planilha_apartamento.cell(row=2,  column=1, value=' ')
     planilha_apartamento.cell(row=2,  column=2, value= ' ')
     planilha_apartamento.cell(row=2,  column=2, value= ' ')
-
+    print('============================ AQUI FINALIZA A CRIAÇÃO DA PLANILHA EXCEL ============================')
     # planilha_apartamento['A1'] = 'Títulos'
     # planilha_apartamento['B1'] = 'Preços'
     # planilha_apartamento['C1'] = 'Localização'
     # planilha_apartamento['A2'] = ' '
     # planilha_apartamento['B2'] = ' '
     # planilha_apartamento['C2'] = ' '
-    print('============================ AQUI FINALIZA A CRIAÇÃO DA PLANILHA EXCEL ============================')
-
+    
     print(os.linesep)
     print(f'Aqui começar as configurações para Encontra os elementos  da Página do Site Olx  da Automação......{os.linesep}')
 
@@ -132,8 +127,7 @@ def Buscador_De_Ap_Cdhu():
                 )
             )
             if preco is not None:
-                print(
-                    f'🙌 Encontramos Todos os preços 🤑 da sua Pesquisa{os.linesep} ')
+                print(f'🙌 Encontramos Todos os preços 🤑 da sua Pesquisa{os.linesep} ')
 
             localizacao = wait.until(
                 expected_conditions.presence_of_all_elements_located(
@@ -142,7 +136,6 @@ def Buscador_De_Ap_Cdhu():
             )
             if localizacao is not None:
                 print(f'🙌 Encontramos Todas as suas Localização da sua Pesquisa{os.linesep}')
-
             print(os.linesep)
 #  '''===========================================================================////////////////////////='''
             print(f'Aqui começar as configurações para Tirar o Print  da Página do Site Olx  da Automação......{os.linesep}')
@@ -156,7 +149,6 @@ def Buscador_De_Ap_Cdhu():
             nome_Arquivo_com_Diretorio = os.path.join('Diretório', nome_arquivo )
             Webdriver.save_screenshot(nome_Arquivo_com_Diretorio)
 
-          
 #  :'''===================================================================////////////////////////='''
             # self.webdriver.execute_script('window.scrollBy(0,900)')
             print(os.linesep)
@@ -165,25 +157,20 @@ def Buscador_De_Ap_Cdhu():
             print(f'Aqui começar as configuração para Inseri as Informações dentro do Excel \Automação\......{os.linesep}')
 
             for indice in range(1, 49):
-
                 nova_linha = [titulo[indice].text,preco[indice].text, localizacao[indice].text]
-
                 planilha_apartamento.append(nova_linha)
-                # self.localizacao[informacoes].text]
                 print(f'📋 Estamos salvando a sua Pesquisa dentro do Excel 📝📝📝....{indice}')
-
                 criando_planilha.save('Apartamento_CDHU.xlsx')
 
             print('============================ AQUI FINALIZA A INSERÇÃO DAS INFORMAÇÕES DENTRO DA PLANILHA EXCEL ============================')
-
             print(os.linesep)
             print(f'Aqui começar as configuração para Encontra a Próxima Página do Site Olx  Automação......{os.linesep}')
             # self.webdriver.execute_script('Window.scrollTo(0,document.body.scrollHeight);') #desce a Página até o Final.
-
             Webdriver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+
             proxima_pagina = wait.until(
                 expected_conditions.presence_of_element_located(
-                    # (By.XPATH,' //*[starts-with(text(),"Próxima pagina")]')
+               
                     (By.XPATH, '//*[contains(text(),"Próxima pagina")]')
                 )
             )
@@ -199,14 +186,15 @@ def Buscador_De_Ap_Cdhu():
                 Mostrando_o_horario_que_enviou = datetime.now().strftime('%d%m%Y %H:%M')
                 mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
 
-                print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}{os.linesep}')
+                print(f'🤖🤖Obrigado por usar o Nosso Boot🤖🤖🤖 as {Hora_Atual} do Dia {Ano_Atual}{os.linesep}')
                 print('Serviço de Raspagem de Dados terminado com sucesso web screll')
-                print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Mostrando_o_horario_que_enviou[9:]} do Dia {mostar_a_data_do_ano}')
+                print(f'🙌 Chegamos ao Final de Todas as Páginas..... até mais 🙌!! as:{Hora_Atual} do Dia {Ano_Atual}')
                 time.sleep(3)
 
     except:
         print('🤔 Não Formos Capaz de Encontra o Erro ..... Não Sei onde está o Erro ')
-
+    shutil.move(os.getcwd() + os.sep +  'Apartamento_CDHU.xlsx', os.getcwd() + os.sep + 'Diretorio_dos_excel')
+    
     from enviando_email_Rodando_todos_os_dias import EnvioDeEmails
     print(
         f'Aqui COMERÇA as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
@@ -215,7 +203,6 @@ def Buscador_De_Ap_Cdhu():
     print('Estamos Anexando o arquivo dentro do seu E-mail')
     send_Email.Start_Send()
     print('E-mail Enviado com Sucesso !!!!')
-
     print(f'Aqui Termina as configuração para ser enviada  por E-mail as Informações da .... \Automação\......{os.linesep}')
 
     print('# BUSCAR POR DIRETÓRIO.... VAI PROCURA PASTA QUE SE ENCONTRA AS FOTOS OU OS PRINTS ".PNG"')
@@ -224,22 +211,29 @@ def Buscador_De_Ap_Cdhu():
     caminho_do_diretorio = glob.glob(targetPatter)
     print(caminho_do_diretorio)
     print(os.linesep)
-    print(os.linesep)
-
-
     sleep(random.randint(10,15))
     print(f'⏭  Vamos Excluir todas as Fotos com final .png{os.linesep}.....Aguarde{os.linesep}')
-
     for caminhos_dos_diretorios in caminho_do_diretorio:
         print(f'⏭  Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
         os.remove(caminhos_dos_diretorios)
         print(f'⏭  Excluimos com Sucesso {os.linesep}')
-
-        Mostrando_o_horario_que_enviou = datetime.now().strftime('%d-%m-%Y')
-        mostar_a_data_do_ano = datetime.now().strftime('%d-%m-%Y')
-        print(f'💯💯💯 Exclusão feitas as {Mostrando_o_horario_que_enviou} {mostar_a_data_do_ano}{os.linesep}')
+        print(f'💯💯💯 Exclusão feitas as {Hora_Atual} {Ano_Atual}{os.linesep}')
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
         print(os.linesep)
+
+    # Exclusão do Arquivo Excel
+    targetPatter = os.path.join(os.getcwd() + os.sep + 'Diretorio_dos_excel' + os.sep + '*.xlsx')
+    Exclusao_Excel = glob.glob(targetPatter)
+    print(Exclusao_Excel)
+    print(os.linesep)   
+    print(f'⏭  Vamos Excluir Todos os Arquivos Excel com final .xlsx{os.linesep}.....Aguarde{os.linesep}')
+    for Arquivo_Excel in Exclusao_Excel:
+        print(f'⏭  Vamos criar um Laço de Repetição  para poder resolver a questão da exclusão em Massa {os.linesep}')
+        os.remove(Arquivo_Excel)
+        print(f'⏭  Excluimos com Sucesso {os.linesep}') 
+        print(f'💯💯💯 Exclusão feitas as {Hora_Atual} {Ano_Atual}{os.linesep}')
+        print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
+        print(os.linesep)  
 
 
 schedule.every().days.at('07:27:45').do(Buscador_De_Ap_Cdhu)
