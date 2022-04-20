@@ -233,7 +233,8 @@ def Buscador_De_Ap_Cdhu():
         print(f'⏭  Excluimos com Sucesso {os.linesep}') 
         print(f'💯💯💯 Exclusão feitas as {Hora_Atual} {Ano_Atual}{os.linesep}')
         print(f' 🤖🤖 Obrigado por usar o Nosso Boot🤖🤖🤖 até mais...{os.linesep}{os.linesep}')
-        print(os.linesep)  
+        print(os.linesep)
+          
 
 
 schedule.every().days.at('07:27:45').do(Buscador_De_Ap_Cdhu)
